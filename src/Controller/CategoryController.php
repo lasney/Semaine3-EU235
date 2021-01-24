@@ -19,9 +19,15 @@ class CategoryController extends AbstractController
      * @Route("/", name="category_index", methods={"GET"})
      */
     public function index(CategoryRepository $categoryRepository): Response
-    {
+    {	
+		//Les sections aurais pus etre generer a partir des routes
+		$Menu = [
+			"article" => "Accueil",
+			"category" => "Catégories (Actuel)",
+		];
         return $this->render('category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
+			'menu' => $Menu,
         ]);
     }
 

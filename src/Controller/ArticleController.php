@@ -19,9 +19,15 @@ class ArticleController extends AbstractController
      * @Route("/", name="article_index", methods={"GET"})
      */
     public function index(ArticleRepository $articleRepository): Response
-    {
+    {	
+		//Les sections aurais pus etre generer a partir des routes
+		$Menu = [
+			"article" => "Accueil (Actuel)",
+			"category" => "Catégories",
+		];
         return $this->render('article/index.html.twig', [
             'articles' => $articleRepository->findAll(),
+			'menu' => $Menu,
         ]);
     }
 
